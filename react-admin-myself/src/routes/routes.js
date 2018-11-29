@@ -7,17 +7,17 @@ export default {
             component: 'Dashboard' 
         },
         {
-            key: '/dashboard/ui', title: 'UI', icon: 'scan',
+            key: '/dashboard', title: 'UI', icon: 'scan',
             subs: [
                 { 
-                    key: '/dashboard/ui/buttons', 
-                    title: '按钮', 
-                    component: 'Buttons'
+                    key: '/dashboard/cate', 
+                    title: '分类', 
+                    component: 'Cate'
                 },
                 { 
-                    key: '/dashboard/ui/icons', 
-                    title: '图标', 
-                    component: 'Icons'
+                    key: '/dashboard/article', 
+                    title: '文章', 
+                    component: 'Article'
                 },
             ],
         },

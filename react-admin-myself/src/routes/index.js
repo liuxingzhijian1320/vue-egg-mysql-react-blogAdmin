@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
-// import { Layout } from 'antd';
-
-// import routesConfig from './routes';
+import { Route, Redirect, Switch } from 'react-router-dom';
+import AllComponents from '../components';
+import routesConfig from './routes';
+import queryString from 'query-string';
 
 export default class CRouter extends Component {
+
     render() {
         return (
-            <div>
-          		3333
-            </div>
+            <Switch>
+                {
+                    
+                }
+
+                <Route render={() => <Redirect to="/404" />} />
+            </Switch>
         )
     }
 }
