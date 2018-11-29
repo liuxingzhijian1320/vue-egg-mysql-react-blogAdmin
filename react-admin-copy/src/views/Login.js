@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input, Button , Icon} from 'antd';
 import { Link } from 'react-router-dom'
-
+import '../assets/styles/login.less'
 
 class Login extends React.Component {
     render() {

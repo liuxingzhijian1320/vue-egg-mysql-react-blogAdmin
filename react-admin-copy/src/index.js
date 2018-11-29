@@ -4,7 +4,7 @@ import * as serviceWorker from './serviceWorker';
 import { AppContainer } from 'react-hot-loader';
 import Page from './Page';
 
-import './style/index.less';
+import './assets/styles/index.less';
 import 'antd/dist/antd.css';
 
 ReactDOM.render(

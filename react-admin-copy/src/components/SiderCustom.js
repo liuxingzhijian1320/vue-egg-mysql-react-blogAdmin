@@ -74,22 +74,16 @@ class SiderCustom extends Component {
                 style={{ overflowY: 'auto' }}
             >
                 <div className="logo" />
+
                 <SiderMenu
+                    theme="dark" 
+                    mode="inline"
                     menus={routes.menus}
                     onClick={this.menuClick}
-                    mode="inline"
                     selectedKeys={[this.state.selectedKey]}
                     openKeys={this.state.firstHide ? null : [this.state.openKey]}
                     onOpenChange={this.openMenu}
                 />
-                <style>
-                    {`
-                    #nprogress .spinner{
-                        left: ${this.state.collapsed ? '70px' : '206px'};
-                        right: 0 !important;
-                    }
-                    `}
-                </style>
             </Sider>
         )
     }
