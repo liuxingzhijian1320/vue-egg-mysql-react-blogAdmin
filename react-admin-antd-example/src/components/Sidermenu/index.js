@@ -2,7 +2,7 @@ import React from 'react'
 import { Layout, Menu, Icon } from 'antd';
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
-import MenuConfig from '../../router/config'
+import routes from '../../router/routes'
 import './index.less'
 const SubMenu = Menu.SubMenu;
 const { Header, Sider, Content } = Layout;
@@ -13,7 +13,6 @@ class NavLeft extends React.Component {
     }
 
     componentWillMount(){
-        console.info('MenuConfig', MenuConfig)
     }
 
     render() {
@@ -30,7 +29,7 @@ class NavLeft extends React.Component {
                <Menu theme="dark" defaultSelectedKeys={['0']} mode="inline">
                     
                     {
-                        MenuConfig.map((item,index)=>{
+                        routes.map((item,index)=>{
                             if(item.children){
                                 return (
                                     <SubMenu

@@ -10,6 +10,7 @@ import Dashboard from './pages/dashboard'
 import 'src/assets/styles/global.less'
 import 'src/assets/styles/iconfont.css'
 
+import './App.less'
 
 class Admin extends React.Component {
 
@@ -17,12 +18,12 @@ class Admin extends React.Component {
         return ( 
             <Layout >
                 <Sidermenu />
-                <Layout >
-                    <Header />
+                <Layout className="layout">
+                    <Header className="header" />
                     <Row className = "content" > 
                         { this.props.children } 
                     </Row>  
-                    <Footer />
+                    <Footer className="footer" />
                 </Layout> 
             </Layout>
         );
