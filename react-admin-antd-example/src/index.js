@@ -5,10 +5,12 @@ import { Provider } from 'react-redux'
 import './index.css';
 import Admin from './admin'
 import Router from './router'
-import configureStore from './redux/store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
-// Redux Store对象，管理所有的Redux状态
-const store = configureStore();
+
+// import configureStore from './redux/store/configureStore';
+// const store = configureStore();
+import store from './store'
+
 ReactDOM.render(
     <Provider store={store}>
         <Router />

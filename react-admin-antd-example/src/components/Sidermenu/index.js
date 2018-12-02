@@ -2,7 +2,6 @@ import React from 'react'
 import { Menu, Icon } from 'antd';
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { switchMenu, saveBtnList } from './../../redux/action'
 import MenuConfig from '../../router/config'
 import './index.less'
 const SubMenu = Menu.SubMenu;
@@ -17,7 +16,11 @@ class NavLeft extends React.Component {
         }
         // 事件派发，自动调用reducer，通过reducer保存到store对象中
         const { dispatch } = this.props;
-        dispatch(switchMenu(item.props.title));
+        const action = {
+            type:'SWITCH_MENU',
+            value: item.props.title
+        }
+        dispatch(action)
 
         this.setState({
             currentKey: key
@@ -48,7 +51,12 @@ class NavLeft extends React.Component {
     }
     homeHandleClick = () => {
         const { dispatch } = this.props;
-        dispatch(switchMenu('首页'));
+        const action = {
+            type:'SWITCH_MENU',
+            value: '首页'
+        }
+        dispatch(action)
+        
         this.setState({
             currentKey: ""
         });

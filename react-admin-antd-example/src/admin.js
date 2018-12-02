@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import Sidermenu from './components/Sidermenu'
 import './style/common.less'
 import Home from './pages/home'
+
 class Admin extends React.Component {
 
     render() {
@@ -25,5 +26,6 @@ class Admin extends React.Component {
             </Row >
         );
     }
-}
-export default connect()(Admin)
+};
+
+export default connect()(Admin);
