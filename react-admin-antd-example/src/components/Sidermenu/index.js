@@ -13,46 +13,62 @@ class NavLeft extends React.Component {
     }
 
     componentWillMount(){
-        const menuTreeNode = this.renderMenu(MenuConfig);
-
-        this.setState({
-            menuTreeNode
-        })
-    }
-    // 菜单渲染
-    renderMenu =(data)=>{
-        return data.map((item)=>{
-            if(item.children){
-                return (
-                    <SubMenu title={item.title} key={item.key}>
-                        { this.renderMenu(item.children)}
-                    </SubMenu>
-                )
-            }
-            return <Menu.Item title={item.title} key={item.key}>
-                <NavLink to={item.key}>{item.title}</NavLink>
-            </Menu.Item>
-        })
+        console.info('MenuConfig', MenuConfig)
     }
 
     render() {
-        let { collapsed } = this.props;
+        let { collapsed, handleClick } = this.props;
         return (
-                <Sider
+            <Sider
                   trigger={null}
                   collapsible
                   collapsed={collapsed}
                 > 
-                  <NavLink to="/home">
-                    <div className="logo" />
-                  </NavLink>
-                  <Menu
-                    onClick={this.handleClick}
-                    theme="dark"
-                  >
-                    { this.state.menuTreeNode }
-                </Menu>
-                </Sider>
+              <NavLink to="/dashboard" className="logo-content">
+                <i className={`iconfont icon-jujuexuexi logo ${collapsed ? 'collapsedactive' : ''}`}></i>
+              </NavLink>
+               <Menu theme="dark" defaultSelectedKeys={['0']} mode="inline">
+                    
+                    {
+                        MenuConfig.map((item,index)=>{
+                            if(item.children){
+                                return (
+                                    <SubMenu
+                                      key={index}
+                                      title={
+                                        <span>
+                                          <Icon type="user" />
+                                          <span>{item.title}</span>
+                                        </span>
+                                      }
+                                    >
+                                    {
+                                        item.children.map((code,codeindex)=>{
+                                            return (
+                                                  <Menu.Item key={code.path}>
+                                                    <NavLink to={code.path}>{code.title}</NavLink>
+                                                  </Menu.Item>
+                                            )
+                                        })
+                                    }
+                                    </SubMenu>
+                                )
+                            }else {
+                                return (
+                                    <Menu.Item key={index}>
+                                      <NavLink to={item.path}>
+                                        <Icon type={item.icon} />
+                                        <span>{item.title}</span>
+                                      </NavLink>
+                                    </Menu.Item>
+                                )
+                            }
+                            
+                        })
+                    }
+
+              </Menu>
+            </Sider>
         );
     }
 }
@@ -63,33 +79,31 @@ const mapState = state =>{
 }
 const mapDispatch = dispatch =>{
     return {
-        // 菜单点击
-        handleClick({ item, key }) {
-            if (key == this.state.currentKey) {
-                return false;
-            }
-            const action = {
-                type:'SWITCH_MENU',
-                value: item.props.title
-            }
-            dispatch(action)
+        // handleClick({ item, key }) {
+        //     if (key == this.state.currentKey) {
+        //         return false;
+        //     }
+        //     const action = {
+        //         type:'SWITCH_MENU',
+        //         value: item.props.title
+        //     }
+        //     dispatch(action)
 
-            this.setState({
-                currentKey: key
-            });
-            // hashHistory.push(key);
-        },
-        homeHandleClick() {
-            const action = {
-                type:'SWITCH_MENU',
-                value: '首页'
-            }
-            dispatch(action)
+        //     this.setState({
+        //         currentKey: key
+        //     });
+        // },
+        // homeHandleClick() {
+        //     const action = {
+        //         type:'SWITCH_MENU',
+        //         value: '首页'
+        //     }
+        //     dispatch(action)
             
-            this.setState({
-                currentKey: ""
-            });
-        }
+        //     this.setState({
+        //         currentKey: ""
+        //     });
+        // }
 
     }
 }

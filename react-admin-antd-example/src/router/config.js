@@ -1,15 +1,18 @@
 const menuList = [
     {
         title: '首页',
-        key: '/home'
+        path: '/dashboard',
+        icon: 'home'
     },
     {
-        title: 'UI',
-        key: '/ui',
+        title: '博客',
+        path: '/blog',
+        icon: 'read',
         children: [
             {
-                title: '按钮',
-                key: '/ui/buttons',
+                title: '分类',
+                path: '/blog/category',
+                icon: 'bulb'
             },
         ]
     },

@@ -5,25 +5,26 @@ import { connect } from 'react-redux'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Sidermenu from './components/Sidermenu'
-import Home from './pages/home'
+import Dashboard from './pages/dashboard'
 
 import 'src/assets/styles/global.less'
+import 'src/assets/styles/iconfont.css'
+
 
 class Admin extends React.Component {
 
     render() {
-        return (
+        return ( 
             <Layout >
-                    <Sidermenu />
-                    <Layout>
-                        <Header />
-                        <Row className = "content" > 
-                            { /* <Home/> */ } 
-                            { this.props.children } 
-                        </Row> 
-                        <Footer />
-                    </Layout>
-            </Layout >
+                <Sidermenu />
+                <Layout >
+                    <Header />
+                    <Row className = "content" > 
+                        { this.props.children } 
+                    </Row>  
+                    <Footer />
+                </Layout> 
+            </Layout>
         );
     }
 };

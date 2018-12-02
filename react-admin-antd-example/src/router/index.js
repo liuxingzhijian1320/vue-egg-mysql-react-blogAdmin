@@ -2,9 +2,9 @@ import React from 'react'
 import { HashRouter, Route, Switch, Redirect} from 'react-router-dom'
 import Login from 'src/pages/login'
 import App from 'src/App'
-import Home from 'src/pages/home';
-import Buttons from 'src/pages/ui/buttons'
-import NoMatch from 'src/pages/nomatch'
+import Dashboard from 'src/pages/dashboard';
+import Category from 'src/pages/blog/category'
+import Nofound from 'src/pages/nofound'
 
 export default class ERouter extends React.Component{
 
@@ -16,10 +16,10 @@ export default class ERouter extends React.Component{
                     <Route path="/" render={()=>
                         <App>
                             <Switch>
-                                <Route path='/home' component={Home} />
-                                <Route path="/ui/buttons" component={Buttons} />
-                                <Redirect to="/home" />
-                                <Route component={NoMatch} /> 
+                                <Route path='/dashboard' component={Dashboard} />
+                                <Route path="/blog/category" component={Category} />
+                                <Redirect to="/dashboard" />
+                                <Route component={Nofound} />
                             </Switch>
                         </App>         
                     } />

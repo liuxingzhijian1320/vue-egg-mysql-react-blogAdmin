@@ -3,7 +3,7 @@ import { Layout, Menu, Icon } from 'antd';
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
-import './header.less'
+import './index.less'
 
 const { Header, Sider, Content } = Layout;
 
