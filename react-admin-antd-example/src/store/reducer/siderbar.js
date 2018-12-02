@@ -1,5 +1,6 @@
 const defaultState = {
 	menuName: '首页',
+	collapsed: false
 }
 
 export default (state=defaultState, action) => {
@@ -9,6 +10,11 @@ export default (state=defaultState, action) => {
 			return {
 					...state,
           menuName:action.value
+			}
+		case 'STATUS_MENU':
+			return {
+					...state,
+          collapsed: !state.collapsed
 			}
 		default:	
 			return state

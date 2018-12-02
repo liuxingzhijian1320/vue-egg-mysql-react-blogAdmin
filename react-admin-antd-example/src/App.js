@@ -1,15 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Layout, Row } from 'antd';
+import { connect } from 'react-redux'
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+import Footer from './components/Footer'
+import Header from './components/Header'
+import Sidermenu from './components/Sidermenu'
+import Home from './pages/home'
 
-export default App;
+import 'src/assets/styles/global.less'
+
+class Admin extends React.Component {
+
+    render() {
+        return (
+            <Layout >
+                    <Sidermenu />
+                    <Layout>
+                        <Header />
+                        <Row className = "content" > 
+                            { /* <Home/> */ } 
+                            { this.props.children } 
+                        </Row> 
+                        <Footer />
+                    </Layout>
+            </Layout >
+        );
+    }
+};
+
+export default connect()(Admin);

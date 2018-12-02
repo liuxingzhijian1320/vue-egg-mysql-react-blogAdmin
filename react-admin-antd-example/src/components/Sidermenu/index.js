@@ -1,32 +1,17 @@
 import React from 'react'
-import { Menu, Icon } from 'antd';
+import { Layout, Menu, Icon } from 'antd';
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import MenuConfig from '../../router/config'
 import './index.less'
 const SubMenu = Menu.SubMenu;
+const { Header, Sider, Content } = Layout;
+
 class NavLeft extends React.Component {
     state = {
         currentKey: ''
     }
-    // 菜单点击
-    handleClick = ({ item, key }) => {
-        if (key == this.state.currentKey) {
-            return false;
-        }
-        // 事件派发，自动调用reducer，通过reducer保存到store对象中
-        const { dispatch } = this.props;
-        const action = {
-            type:'SWITCH_MENU',
-            value: item.props.title
-        }
-        dispatch(action)
 
-        this.setState({
-            currentKey: key
-        });
-        // hashHistory.push(key);
-    };
     componentWillMount(){
         const menuTreeNode = this.renderMenu(MenuConfig);
 
@@ -49,35 +34,63 @@ class NavLeft extends React.Component {
             </Menu.Item>
         })
     }
-    homeHandleClick = () => {
-        const { dispatch } = this.props;
-        const action = {
-            type:'SWITCH_MENU',
-            value: '首页'
-        }
-        dispatch(action)
-        
-        this.setState({
-            currentKey: ""
-        });
-    };
+
     render() {
+        let { collapsed } = this.props;
         return (
-            <div>
-                <NavLink to="/home" onClick={this.homeHandleClick}>
-                    <div className="logo">
-                        <img src="/assets/logo-ant.svg" alt=""/>
-                        <h1>Imooc MS</h1>
-                    </div>
-                </NavLink>
-                <Menu
+                <Sider
+                  trigger={null}
+                  collapsible
+                  collapsed={collapsed}
+                > 
+                  <NavLink to="/home">
+                    <div className="logo" />
+                  </NavLink>
+                  <Menu
                     onClick={this.handleClick}
                     theme="dark"
-                >
+                  >
                     { this.state.menuTreeNode }
                 </Menu>
-            </div>
+                </Sider>
         );
     }
 }
-export default connect()(NavLeft)
+const mapState = state =>{
+    return {
+        collapsed: state.siderbar.collapsed
+    }
+}
+const mapDispatch = dispatch =>{
+    return {
+        // 菜单点击
+        handleClick({ item, key }) {
+            if (key == this.state.currentKey) {
+                return false;
+            }
+            const action = {
+                type:'SWITCH_MENU',
+                value: item.props.title
+            }
+            dispatch(action)
+
+            this.setState({
+                currentKey: key
+            });
+            // hashHistory.push(key);
+        },
+        homeHandleClick() {
+            const action = {
+                type:'SWITCH_MENU',
+                value: '首页'
+            }
+            dispatch(action)
+            
+            this.setState({
+                currentKey: ""
+            });
+        }
+
+    }
+}
+export default connect(mapState,mapDispatch)(NavLeft)
