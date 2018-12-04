@@ -14,6 +14,11 @@ const menuList = [
                 path: '/blog/category',
                 icon: 'bulb'
             },
+            {
+                title: '文章',
+                path: '/blog/article',
+                icon: 'bulb'
+            },
         ]
     },
 

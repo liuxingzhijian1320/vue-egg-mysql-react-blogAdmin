@@ -4,8 +4,11 @@ const Service = require('egg').Service;
 
 
 class CateService extends Service {
-    async getlist() {
-        const list = await this.ctx.model.Cate.findAll()
+    async getlist({ pageSize, per_page }) {
+        const list = await this.ctx.model.Cate.findAndCountAll({
+            offset: per_page - 0 - 1, // 第几页数
+            limit: pageSize - 0, // 每页多少条数
+        })
         return list;
     }
 

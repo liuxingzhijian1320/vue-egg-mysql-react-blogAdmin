@@ -1,7 +1,7 @@
 var baseUrl = '';
 if (process.env.NODE_ENV == 'development') {
-    baseUrl = '/api'
+    baseUrl = '/api/admin'
 } else {
-    baseUrl = ''
+    baseUrl = '/admin'
 }
 export default baseUrl

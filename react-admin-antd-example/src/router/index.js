@@ -4,6 +4,9 @@ import Login from 'src/pages/login'
 import App from 'src/App'
 import Dashboard from 'src/pages/dashboard';
 import Category from 'src/pages/blog/category'
+import Article from 'src/pages/blog/article'
+
+
 import Nofound from 'src/pages/nofound'
 
 export default class ERouter extends React.Component{
@@ -18,6 +21,7 @@ export default class ERouter extends React.Component{
                             <Switch>
                                 <Route path='/dashboard' component={Dashboard} />
                                 <Route path="/blog/category" component={Category} />
+                                <Route path="/blog/article" component={Article} />
                                 <Redirect to="/dashboard" />
                                 <Route component={Nofound} />
                             </Switch>

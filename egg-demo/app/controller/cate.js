@@ -22,7 +22,8 @@ function passData(data, code) {
 class CateController extends Controller {
     async cate() {
         const { ctx } = this;
-        const list = await ctx.service.cate.getlist();
+        // console.info('ctx', ctx.query)
+        const list = await ctx.service.cate.getlist(ctx.query);
         ctx.body = passData(list, 0);
     }
 

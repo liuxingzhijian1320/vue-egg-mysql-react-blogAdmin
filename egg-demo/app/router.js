@@ -14,14 +14,21 @@ module.exports = app => {
     // 用户 新增
     router.post('/user/add', controller.user.userAdd);
 
+    // >>>  admin
     // 分类 列表
-    router.get('/cate', controller.cate.cate);
+    router.get('/admin/cate/list', controller.cate.cate);
     // 分类 详情 
-    router.get('/cate/:id', controller.cate.cateFind);
+    router.get('/admin/cate/:id', controller.cate.cateFind);
     // 分类 新增
-    router.post('/cate/add', controller.cate.cateAdd);
+    router.post('/admin/cate/add', controller.cate.cateAdd);
     // 分类 删除
-    router.post('/cate/del/:id', controller.cate.cateDel);
+    router.post('/admin/cate/del/:id', controller.cate.cateDel);
     // 分类 编辑
-    router.post('/cate/update/:id', controller.cate.cateUpdate);
+    router.post('/admin/cate/update/:id', controller.cate.cateUpdate);
+    // >>>  blog
+    // 分类 列表
+    router.get('/blog/cate/list', controller.cate.cate);
+
+
+
 };
