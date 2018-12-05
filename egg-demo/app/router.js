@@ -29,6 +29,8 @@ module.exports = app => {
     // 分类 列表
     router.get('/blog/cate/list', controller.cate.cate);
 
-
+    // 登录记录
+    router.get('/admin/loginlog/list', controller.loginlog.loginlog);
+    router.post('/admin/loginlog/add', controller.loginlog.loginlogAdd);
 
 };

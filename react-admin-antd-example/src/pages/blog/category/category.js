@@ -1,5 +1,7 @@
 import React from 'react'
 import { Table, Modal, Button, Input, Radio, Form, message, Divider, Popconfirm, Icon } from 'antd';
+import moment from 'moment';
+
 import request from 'src/assets/scripts/request.js'
 import './category.less'
 const FormItem = Form.Item;
@@ -48,6 +50,7 @@ export default class Category extends React.Component {
         visible: false,
         total: 0,
         current: 1,
+        per_page: 1,
         pageSize: 100,
         detail: {}
     }
@@ -71,6 +74,9 @@ export default class Category extends React.Component {
         url:`/cate/list?pageSize=${this.state.pageSize}&per_page=${per_page}`
       }).then(res=>{
         // console.info(res.data)
+        res.data.rows.forEach((item)=>{
+             item.created_at = moment(item.created_at).format('YYYY-MM-DD HH:mm:ss');
+        })
         this.setState({
           tableList: res.data.rows,
           total: res.data.count

@@ -1,17 +1,28 @@
 import React from 'react'
-import { HashRouter, Route, Switch, Redirect} from 'react-router-dom'
+import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
 import Login from 'src/pages/login'
 import App from 'src/App'
-import Dashboard from 'src/pages/dashboard';
-import Category from 'src/pages/blog/category/category'
-import Article from 'src/pages/blog/article/article'
+// 按需加在组件
+import asyncComponent from 'src/assets/scripts/asyncComponent'
+
+const Dashboard = asyncComponent(()=>import('src/pages/dashboard'))
+const Category = asyncComponent(()=>import('src/pages/blog/category/category'))
+const Article = asyncComponent(()=>import('src/pages/blog/article/article'))
+const Loginlog = asyncComponent(()=>import('src/pages/blog/loginlog/loginlog'))
 
 
 import Nofound from 'src/pages/nofound'
 
-export default class ERouter extends React.Component{
-
+ class ERouter extends React.Component{
     render(){
+         let { userName, password } = JSON.parse(localStorage.getItem("zhooson_blog_Auth")) || {};
+         var isLogin;
+         if(userName ==='admin' && password=='0000'){
+            isLogin = true
+         }else {
+            isLogin = false
+         }
+         console.info('isLogin', isLogin)
         return (
             <HashRouter>
                 <Switch>
@@ -22,8 +33,9 @@ export default class ERouter extends React.Component{
                                 <Route path='/dashboard' component={Dashboard} />
                                 <Route path="/blog/category" component={Category} />
                                 <Route path="/blog/article" component={Article} />
+                                <Route path='/blog/loginlog' component={Loginlog} />
+                                
                                 <Redirect to="/dashboard" />
-                                <Route component={Nofound} />
                             </Switch>
                         </App>         
                     } />
@@ -32,3 +44,5 @@ export default class ERouter extends React.Component{
         );
     }
 }
+
+export default ERouter

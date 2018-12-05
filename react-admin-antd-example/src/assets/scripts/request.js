@@ -32,7 +32,7 @@ service.interceptors.response.use(
     response => {
         // 此处可以根据状态吗可以做一些逻辑处理
         const { data, config: { isLoading } } = response;
-        // console.info('response', response)
+        console.info('response', response)
 
         if (isLoading) loadingInstance.close(); // loading
 

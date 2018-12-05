@@ -2,7 +2,10 @@ const menuList = [
     {
         title: '首页',
         path: '/dashboard',
-        icon: 'home'
+        icon: 'home',
+        meta: {
+            requireAuth: true
+        }
     },
     {
         title: '博客',
@@ -12,12 +15,26 @@ const menuList = [
             {
                 title: '分类',
                 path: '/blog/category',
-                icon: 'bulb'
+                icon: 'bulb',
+                meta: {
+                    requireAuth: true
+                }
             },
             {
                 title: '文章',
                 path: '/blog/article',
-                icon: 'bulb'
+                icon: 'bulb',
+                meta: {
+                    requireAuth: true
+                }
+            },
+            {
+                title: '登录记录',
+                path: '/blog/loginlog',
+                icon: 'bulb',
+                meta: {
+                    requireAuth: true
+                }
             },
         ]
     },

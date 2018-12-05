@@ -1,6 +1,8 @@
 import React from 'react'
 import { Layout, Row } from 'antd';
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+
 
 import Footer from './components/Footer'
 import Header from './components/Header'
@@ -15,6 +17,7 @@ import './App.less'
 class Admin extends React.Component {
 
     render() {
+         // console.info(234234, this.props);
         return ( 
             <Layout >
                 <Sidermenu />
@@ -30,4 +33,4 @@ class Admin extends React.Component {
     }
 };
 
-export default connect()(Admin);
+export default connect()(withRouter(Admin));
