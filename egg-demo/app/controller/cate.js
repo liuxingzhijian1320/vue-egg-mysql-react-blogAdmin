@@ -37,7 +37,7 @@ class CateController extends Controller {
     async cateAdd() {
         const { ctx } = this;
         const { title } = ctx.request.body;
-        const created_at = moment().format('YYYY-MM-DD HH:mm:ss');
+        const created_at = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
         await ctx.service.cate.add({ title, created_at });
         ctx.body = {
             code: 0,
