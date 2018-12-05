@@ -36,7 +36,6 @@ export default class Category extends React.Component {
             >
             <Button   
               type="danger" size="small" 
-              
               ghost
             >
               删除
@@ -198,7 +197,7 @@ export default class Category extends React.Component {
       return (
         <div>
         
-          <Button type="primary" icon="plus" onClick={this.addHandler}>
+          <Button type="primary" className="m-r-t" icon="plus" onClick={this.addHandler}>
             新增          
           </Button>
 

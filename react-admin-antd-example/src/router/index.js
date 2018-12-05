@@ -3,8 +3,8 @@ import { HashRouter, Route, Switch, Redirect} from 'react-router-dom'
 import Login from 'src/pages/login'
 import App from 'src/App'
 import Dashboard from 'src/pages/dashboard';
-import Category from 'src/pages/blog/category'
-import Article from 'src/pages/blog/article'
+import Category from 'src/pages/blog/category/category'
+import Article from 'src/pages/blog/article/article'
 
 
 import Nofound from 'src/pages/nofound'
