@@ -27,9 +27,10 @@ class CateController extends Controller {
         ctx.body = passData(list, 0);
     }
 
-    async cateFind() {
+    async cateDetail() {
         const { ctx } = this;
         const cateId = ctx.params.id;
+        // console.info('cateId', cateId)
         const list = await ctx.service.cate.find(toInt(cateId));
         ctx.body = passData(list, 0);
     }

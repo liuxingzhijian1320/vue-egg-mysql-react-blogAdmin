@@ -13,7 +13,7 @@ class CateService extends Service {
     }
 
     async find(id) {
-        const list = await this.ctx.model.Cate.findOne({ id: id })
+        const list = await this.ctx.model.Cate.findOne({ 'where': { 'id': id } })
         return list;
     }
 

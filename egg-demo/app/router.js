@@ -18,7 +18,7 @@ module.exports = app => {
     // 分类 列表
     router.get('/admin/cate/list', controller.cate.cate);
     // 分类 详情 
-    router.get('/admin/cate/:id', controller.cate.cateFind);
+    router.get('/admin/cate/:id', controller.cate.cateDetail);
     // 分类 新增
     router.post('/admin/cate/add', controller.cate.cateAdd);
     // 分类 删除
