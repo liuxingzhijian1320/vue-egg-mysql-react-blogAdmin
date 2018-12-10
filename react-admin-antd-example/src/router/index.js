@@ -22,7 +22,7 @@ import Nofound from 'src/pages/nofound'
          }else {
             isLogin = false
          }
-         console.info('isLogin', isLogin)
+         // console.info('isLogin', isLogin)
         return (
             <HashRouter>
                 <Switch>

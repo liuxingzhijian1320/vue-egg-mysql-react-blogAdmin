@@ -1,6 +1,6 @@
 import React from 'react'
 import { Layout, Menu, Icon } from 'antd';
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import routes from '../../router/routes'
 import './index.less'
@@ -15,8 +15,13 @@ class NavLeft extends React.Component {
     componentWillMount(){
     }
 
+    onSelect=({ item, key, selectedKeys })=>{
+        console.info(444, item, key, selectedKeys )
+    }
+
     render() {
         let { collapsed, handleClick } = this.props;
+        // console.info(333333, this.props)
         return (
             <Sider
                   trigger={null}
@@ -26,14 +31,14 @@ class NavLeft extends React.Component {
               <NavLink to="/dashboard" className="logo-content">
                 <i className={`iconfont icon-jujuexuexi logo ${collapsed ? 'collapsedactive' : ''}`}></i>
               </NavLink>
-               <Menu theme="dark" defaultSelectedKeys={['0']} mode="inline">
+               <Menu theme="dark" defaultSelectedKeys={['0']} mode="inline" onSelect={this.onSelect}>
                     
                     {
                         routes.map((item,index)=>{
                             if(item.children){
                                 return (
                                     <SubMenu
-                                      key={index}
+                                      key={item.path}
                                       title={
                                         <span>
                                           <Icon type="user" />
@@ -44,9 +49,9 @@ class NavLeft extends React.Component {
                                     {
                                         item.children.map((code,codeindex)=>{
                                             return (
-                                                  <Menu.Item key={code.path}>
-                                                    <NavLink to={code.path}>{code.title}</NavLink>
-                                                  </Menu.Item>
+                                                <Menu.Item key={code.path}>
+                                                    <NavLink  to={code.path}>{code.title}</NavLink>
+                                                </Menu.Item>
                                             )
                                         })
                                     }
@@ -54,7 +59,7 @@ class NavLeft extends React.Component {
                                 )
                             }else {
                                 return (
-                                    <Menu.Item key={index}>
+                                    <Menu.Item key={item.path}>
                                       <NavLink to={item.path}>
                                         <Icon type={item.icon} />
                                         <span>{item.title}</span>
@@ -106,4 +111,4 @@ const mapDispatch = dispatch =>{
 
     }
 }
-export default connect(mapState,mapDispatch)(NavLeft)
+export default connect(mapState,mapDispatch)(withRouter(NavLeft))

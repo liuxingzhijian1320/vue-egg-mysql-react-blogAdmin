@@ -1,18 +1,18 @@
 <template>
   <div class="hello">
-    <input v-model.trim="title" type="text">
-    <button @click="add">新增</button>
+    <!-- <input v-model.trim="title" type="text"> -->
+    <!-- <button @click="add">新增</button> -->
     <hr>
     <el-table :data="list" border style="width: 100%">
       <el-table-column prop="id" label="ID"></el-table-column>
       <el-table-column prop="title" label="菜系"></el-table-column>
       <el-table-column prop="created_at" label="创建时间"></el-table-column>
-      <el-table-column label="操作" width="100">
+      <!-- <el-table-column label="操作" width="100">
         <template slot-scope="scope">
           <el-button @click="update(scope.row)" type="text" size="small">编辑</el-button>
           <el-button type="text" @click="del(scope.row)" size="small">删除</el-button>
         </template>
-      </el-table-column>
+      </el-table-column> -->
     </el-table>
     <!-- 编辑弹窗 -->
     <el-dialog title="编辑" :visible.sync="dialogFormVisible">
@@ -57,19 +57,19 @@ export default {
     async fetch() {
       let { data } = await request(
         {
-          url: "/cate"
+          url: "/cate/list?pageSize=100&per_page=1"
         },
         {
           // isLoading: false
         }
       );
-      data.forEach(
+      data.rows.forEach(
         item =>
           (item.created_at = moment(item.created_at).format(
             "YYYY-MM-DD HH:mm:ss"
           ))
       );
-      this.list = data;
+      this.list = data.rows;
     },
     async add() {
       if (!this.title) return;
