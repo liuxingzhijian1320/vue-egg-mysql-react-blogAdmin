@@ -42,6 +42,7 @@
     "react": "^16.3.2",
     "react-dev-utils": "^5.0.1",
     "react-dom": "^16.3.2",
+    "react-quill": "^1.3.3",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "redux": "3.7.2",
@@ -102,13 +103,13 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": { 
+  "proxy": {
     "/api": {
-        "target": "http://localhost:7001",
-        "pathRewrite": {
-            "^/api": ""
-        },
-        "changeOrigin":true
-    }  
+      "target": "http://localhost:7001",
+      "pathRewrite": {
+        "^/api": ""
+      },
+      "changeOrigin": true
+    }
   }
 }

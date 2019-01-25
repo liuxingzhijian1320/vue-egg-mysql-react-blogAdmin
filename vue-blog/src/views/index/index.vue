@@ -33,7 +33,7 @@
 import axios from "axios";
 import moment from "moment";
 
-import request from "../request/index";
+import request from "../../request/index";
 
 export default {
   name: "HelloWorld",

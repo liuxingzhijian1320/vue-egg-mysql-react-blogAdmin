@@ -29,6 +29,21 @@ module.exports = app => {
     // 分类 列表
     router.get('/blog/cate/list', controller.cate.cate);
 
+    // >>>  admin
+    // 文章 列表
+    router.get('/admin/article/list', controller.article.list);
+    // 文章 详情 
+    // router.get('/admin/article/:id', controller.article.articleDetail);
+    // 文章 新增
+    router.post('/admin/article/add', controller.article.articleAdd);
+    // 文章 删除
+    // router.post('/admin/article/del/:id', controller.article.articleDel);
+    // 文章 编辑
+    // router.post('/admin/article/update/:id', controller.article.cateUpdate);
+    // 文章 列表
+    router.get('/blog/article/list', controller.article.list);
+
+
     // 登录记录
     router.get('/admin/loginlog/list', controller.loginlog.loginlog);
     router.post('/admin/loginlog/add', controller.loginlog.loginlogAdd);
